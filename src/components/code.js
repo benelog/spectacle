@@ -15,11 +15,13 @@ export default class Code extends Component {
   }
   render() {
     return (
-      <code
-        className={this.props.className}
-        style={[this.context.styles.components.code, getStyles.call(this), this.props.style]}
-        dangerouslySetInnerHTML={this.createMarkup()}
-      />
+      <pre className={this.props.className} style={[this.context.styles.components.codePane.pre, getStyles.call(this), this.props.style]}>
+        <code
+            className={`language-${this.props.lang}`}
+            style={this.context.styles.components.codePane.code}
+            dangerouslySetInnerHTML={this.createMarkup()}
+        />
+      </pre>
     );
   }
 }
@@ -33,4 +35,8 @@ Code.propTypes = {
 Code.contextTypes = {
   styles: PropTypes.object,
   store: PropTypes.object
+};
+
+Code.defaultProps = {
+  lang: "markup"
 };
