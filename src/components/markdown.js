@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import markdownToReact from "markdown-to-react-components";
+import marksy from "marksy";
 
 import BlockQuote from "./block-quote";
 import CodePane from "./code-pane";
@@ -31,7 +31,7 @@ _CombineBlockQuote.propTypes = { children: PropTypes.node };
 const _CodePane = ({ language, code }) => <CodePane lang={language} source={code}/>;
 _CodePane.propTypes = { lang: PropTypes.string, source: PropTypes.string };
 
-markdownToReact.configure({
+const compile = marksy({
   a: Link,
   blockquote: _CombineBlockQuote,
   code: _CodePane,
@@ -65,7 +65,7 @@ export default class Markdown extends Component {
     const { style, children } = this.props;
     return (
       <div style={style}>
-        { markdownToReact(children).tree }
+        { compile(children).tree }
       </div>
     );
   }
