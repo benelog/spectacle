@@ -31,6 +31,9 @@ _CombineBlockQuote.propTypes = { children: PropTypes.node };
 const _CodePane = ({ language, code }) => <CodePane lang={language} source={code}/>;
 _CodePane.propTypes = { lang: PropTypes.string, source: PropTypes.string };
 
+const _OList = ({ children }) => <List ordered>{children}</List>;
+_OList.propTypes = { children: PropTypes.node };
+
 const compile = marksy({
   a: Link,
   blockquote: _CombineBlockQuote,
@@ -48,6 +51,7 @@ const compile = marksy({
   li: ListItem,
   p: Text,
   strong: _S("bold"),
+  ol: _OList,
   ul: List
 });
 
