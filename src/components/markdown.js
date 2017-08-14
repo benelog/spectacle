@@ -35,24 +35,29 @@ const _OList = ({ children }) => <List ordered>{children}</List>;
 _OList.propTypes = { children: PropTypes.node };
 
 const compile = marksy({
-  a: Link,
-  blockquote: _CombineBlockQuote,
-  code: _CodePane,
-  del: _S("strikethrough"),
-  em: _S("italic"),
-  h1: _Heading(1),
-  h2: _Heading(2),
-  h3: _Heading(3),
-  h4: _Heading(4),
-  h5: _Heading(5),
-  h6: _Heading(6),
-  img: Image,
-  codespan: Code,
-  li: ListItem,
-  p: Text,
-  strong: _S("bold"),
-  ol: _OList,
-  ul: List
+  createElement: React.createElement,
+  components: {
+  },
+  elements: {
+    a: Link,
+    blockquote: _CombineBlockQuote,
+    code: _CodePane,
+    del: _S("strikethrough"),
+    em: _S("italic"),
+    h1: _Heading(1),
+    h2: _Heading(2),
+    h3: _Heading(3),
+    h4: _Heading(4),
+    h5: _Heading(5),
+    h6: _Heading(6),
+    img: Image,
+    codespan: Code,
+    li: ListItem,
+    p: Text,
+    strong: _S("bold"),
+    ol: _OList,
+    ul: List
+  }
 });
 
 export default class Markdown extends Component {
