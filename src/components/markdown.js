@@ -40,6 +40,7 @@ const _CombineBlockQuote = ({ children }) => (
 _CombineBlockQuote.propTypes = { children: PropTypes.node };
 
 const compile = marksy({
+  createElement: React.createElement,
   elements: {
     a: Link,
     blockquote: _CombineBlockQuote,
