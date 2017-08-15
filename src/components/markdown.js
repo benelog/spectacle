@@ -39,12 +39,15 @@ const _CombineBlockQuote = ({ children }) => (
 );
 _CombineBlockQuote.propTypes = { children: PropTypes.node };
 
+const _CodePane = ({ language, code, children }) => <CodePane lang={language} source={code}>{children}</CodePane>;
+_CodePane.propTypes = { lang: PropTypes.string, source: PropTypes.string };
+
 const compile = marksy({
   createElement: React.createElement,
   elements: {
     a: Link,
     blockquote: _CombineBlockQuote,
-    code: CodePane,
+    code: _CodePane,
     del: _S('strikethrough'),
     em: _S('italic'),
     h1: _Heading(1),
