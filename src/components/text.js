@@ -57,7 +57,6 @@ export default class Text extends Component {
         transformOrigin: 'center top'
       },
       nonFit: {
-        lineHeight
       }
     };
     const typefaceStyle = this.context.typeface || {};
