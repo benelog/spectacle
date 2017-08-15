@@ -5,7 +5,10 @@ import Radium from 'radium';
 import isUndefined from 'lodash/isUndefined';
 
 const format = (str) => {
-  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  if (str.replace) {
+    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  return str.map((element) => format(element));
 };
 
 @Radium
