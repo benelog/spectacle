@@ -42,6 +42,9 @@ _CombineBlockQuote.propTypes = { children: PropTypes.node };
 const _CodePane = ({ language, code, children }) => <CodePane lang={language} source={code}>{children}</CodePane>;
 _CodePane.propTypes = { lang: PropTypes.string, source: PropTypes.string };
 
+const _OrderedList = ({ children }) => <List ordered>{children}</List>
+_OrderedList.propTypes = { ordered: PropTypes.bool };
+
 const compile = marksy({
   createElement: React.createElement,
   elements: {
@@ -61,6 +64,7 @@ const compile = marksy({
     li: ListItem,
     p: Text,
     strong: _S('bold'),
+    ol: _OrderedList,
     ul: List,
     table: Table,
     thead: TableHeader,
